@@ -1,0 +1,55 @@
+.homepage-container {
+    width: 100%;
+    height: 100vh;
+}
+
+.panel {
+    width: 100%;
+    height: 70vh;
+}
+
+.panel-image {
+    display: flex;
+    background-image: url('../Imgs/Carrier.jpg');
+    height: 100%;
+    background-attachment: fixed;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.panel-description {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.panel-description-background {
+    width: 30%;
+    height: 40%;
+    border-radius: calc(2vh);
+}
+
+.panel-description-background h2 {
+    font-size: calc(2vw);
+    margin-bottom: calc(5vh);
+}
+
+.panel-description-background button {
+    width: 30%;
+    height: calc(4.5vh);
+    font-size: calc(1vw);
+    border: none;
+    border-left: none;
+    transition: ease-in 0.3s;
+    background-color: transparent;
+}
+
+.panel-description-background button:hover {
+    background-color: rgb(51, 172, 228);
+    color: white;
+    transition: ease 0.3s;
+}
