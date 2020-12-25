@@ -1,9 +1,9 @@
 :root {
-    --one: #242582;
-    --two: #553d67;
-    --three: #f64c72;
-    --four: #99738e;
-    --five: #2f2fa2;
+    --one: #7cdbd5;
+    --red: #f53240;
+    --three: #f9bed2;
+    --four: #02c8a7;
+    --five: rgb(228, 228, 228);
 }
 
 /*
@@ -35,7 +35,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--three);
+    background: var(--red);
     border-radius: 100%;
     -webkit-transform: scale(0);
     transform: scale(0);
@@ -48,7 +48,7 @@
 }
 
 .navbar-div:hover, .navbar-div:focus, .navbar-div:active {
-    color: var(--one);
+    color: var(--five);
 }
 
 .navbar-div:hover:before, .navbar-div:focus:before, .navbar-div:active:before {
@@ -82,7 +82,7 @@
 }
 
 .navbar-item-link h2:hover, .navbar-signup h2:hover {
-    color: var(--two);
+    color: var(--one);
     transition: ease-in 0.3s;
     cursor: pointer;
 }

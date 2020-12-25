@@ -17,7 +17,7 @@ class Home extends React.Component {
                     {/* The panel on the homepage, contains background image, signup button */}
                     <section className="panel" >
                         <div className="panel-image">
-                            <img className="panel-vector-img" src={Carrier} width={"75%"} height={"75%"} />    
+                            <img className="panel-vector-img" src={Carrier} width={"100%"} height={"100%"} />    
                         </div>
                     </section>
                 </div>

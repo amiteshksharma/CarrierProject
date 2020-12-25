@@ -1,9 +1,9 @@
 :root {
-    --one: #242582;
-    --two: #553d67;
-    --three: #f64c72;
-    --four: #99738e;
-    --five: #2f2fa2;
+    --one: #7cdbd5;
+    --two: #fs3240;
+    --three: #f9bed2;
+    --four: #02c8a7;
+    --five: rgb(228, 228, 228);
 }
 
 .homepage-container {
