@@ -1,0 +1,106 @@
+:root {
+    --one: #242582;
+    --two: #553d67;
+    --three: #f64c72;
+    --four: #99738e;
+    --five: #2f2fa2;
+}
+
+/*
+    The navbar css styling, begins with the hover effect
+*/
+.navbar-div {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: calc(7vh);
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    position: absolute;
+    overflow: hidden;
+    background: transparent;
+    -webkit-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+.navbar-div:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--three);
+    border-radius: 100%;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+
+.navbar-div:hover, .navbar-div:focus, .navbar-div:active {
+    color: var(--one);
+}
+
+.navbar-div:hover:before, .navbar-div:focus:before, .navbar-div:active:before {
+    -webkit-transform: scale(2);
+    transform: scale(2);
+}
+
+.navbar-items-left, .navbar-items-right {
+    margin-left: calc(0.3vw);
+    margin-top: calc(0.5vh);
+    width: 30%;
+    display: grid;
+    grid-template-columns: 10% 22% 22% 22%;
+}
+
+.navbar-logo {
+    margin-top: calc(0.4vh);    
+}
+
+.navbar-item-link {
+    align-self: center;
+    justify-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: calc(0.7vh);
+}
+
+.navbar-item-link h2 {
+    font-size: calc(1.1vw);
+    transition: ease-out 0.3s;
+}
+
+.navbar-item-link h2:hover, .navbar-signup h2:hover {
+    color: var(--two);
+    transition: ease-in 0.3s;
+    cursor: pointer;
+}
+
+.navbar-items-right {
+    padding-left: calc(64vw);
+}
+
+.navbar-signup {
+    align-self: center;
+    justify-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: calc(0.7vh);
+    width: calc(4vw); 
+}
+
+.navbar-signup h2 {
+    font-size: calc(1.1vw);
+    transition: ease-out 0.3s;
+}

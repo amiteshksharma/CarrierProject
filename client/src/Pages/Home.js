@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import Carrier from '../Imgs/Carrier.jpg';
+import Carrier from '../Imgs/Carrier_vector_background.jpg';
+import NavBar from '../Components/NavBar';
 import '../Styling//Home.css';
 
 class Home extends React.Component {
@@ -11,25 +12,12 @@ class Home extends React.Component {
     render() {
         return (
             <div>
+                <NavBar />
                 <div className="homepage-container">
                     {/* The panel on the homepage, contains background image, signup button */}
                     <section className="panel" >
                         <div className="panel-image">
-                            <div className="panel-description">
-                                {/* The text display on the home page */}
-                                <div className="panel-description-background">
-                                    <h2>Returning Packages Simplified.</h2>
-                                    <button>Sign up</button>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-
-                <div className="homepage-container">
-                    <section className="panel" >
-                        <div className="panel-image">
-                            
+                            <img className="panel-vector-img" src={Carrier} width={"75%"} height={"75%"} />    
                         </div>
                     </section>
                 </div>
@@ -37,5 +25,12 @@ class Home extends React.Component {
         )
     }
 }
+
+{/* <div className="panel-description">
+    <div className="panel-description-background">
+        <h2>Returning Packages Simplified.</h2>
+        <button>Sign up</button>
+    </div>
+</div> */}
 
 export default Home;

@@ -1,3 +1,11 @@
+:root {
+    --one: #242582;
+    --two: #553d67;
+    --three: #f64c72;
+    --four: #99738e;
+    --five: #2f2fa2;
+}
+
 .homepage-container {
     width: 100%;
     height: 100vh;
@@ -5,17 +13,18 @@
 
 .panel {
     width: 100%;
-    height: 70vh;
+    height: 100vh;
+    background-color: var(--one);
 }
 
 .panel-image {
-    display: flex;
-    background-image: url('../Imgs/Carrier.jpg');
     height: 100%;
+    width: 100%;
+    padding-top: calc(12vh);
     background-attachment: fixed;
-    background-position: bottom;
+    background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: auto;
 }
 
 .panel-description {
