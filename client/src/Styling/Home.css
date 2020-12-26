@@ -1,9 +1,10 @@
 :root {
     --one: #7cdbd5;
-    --two: #fs3240;
+    --red: #f53240;
     --three: #f9bed2;
     --four: #02c8a7;
     --five: rgb(228, 228, 228);
+    --black: rgb(192, 192, 192);
 }
 
 .homepage-container {
@@ -20,45 +21,91 @@
 .panel-image {
     height: 100%;
     width: 100%;
-    padding-top: calc(12vh);
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: auto;
 }
 
-.panel-description {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    flex-direction: column;
+.panel-vector-img {
+    image-rendering: auto;
 }
 
-.panel-description-background {
-    width: 30%;
-    height: 40%;
-    border-radius: calc(2vh);
+/* The lone cloud on the left side */
+.cloud-section {
+    position: absolute;
+    top: calc(22vh);
+    left: calc(10vw);  
+    animation: shake 4s infinite;  
 }
 
-.panel-description-background h2 {
-    font-size: calc(2vw);
-    margin-bottom: calc(5vh);
+@keyframes shake {
+    0% {
+        transform: translate(0%,0);
+    }
+    50% {
+        transform: translate(-10%,0);
+    }
+    100% {
+        transform: translate(0%,0);
+    }
 }
 
-.panel-description-background button {
-    width: 30%;
-    height: calc(4.5vh);
-    font-size: calc(1vw);
-    border: none;
-    border-left: none;
-    transition: ease-in 0.3s;
-    background-color: transparent;
+.banner {
+    position: absolute;
+    top: calc(19vh);
+    right: calc(15vw);
+    animation: shake 5s infinite;  
 }
 
-.panel-description-background button:hover {
-    background-color: rgb(51, 172, 228);
-    color: white;
-    transition: ease 0.3s;
+/* The css styling for the cloud */
+.cloud { 
+    position: relative;
+    width: calc(25vw);
+    height: calc(13vh);
+    background:#ECEFF1;
+    box-shadow: calc(10px) calc(10px) rgba(0,0,0,0.2);
+    border-radius: calc(4.2vw);
+ }
+
+ .cloud::after, .cloud::before {
+    content: "";
+    position: relative;
+    display: inline-block;
+    background: inherit;
+    border-radius: inherit;
+ }
+
+ .cloud::after {
+    width: calc(9vw);
+    height: calc(8vw);
+    top: calc(-7vh);
+    left: calc(-10vw);
+ }
+
+ .cloud::before {
+    width: calc(13vw);
+    height: calc(9vw);
+    top: calc(-8vh);
+    left: calc(10vw);
+ }
+
+ .cloud h2 {
+    position: absolute;
+    font-size: calc(2.5vw);
+    top: calc(3.5vh);
+    left: calc(0.8vw);
+    z-index: 10;
+}
+
+/* The description of the website */
+.description {
+    position: absolute;
+    top: calc(34vh);
+    right: calc(16vw);
+}
+
+.summary {
+    width: calc(19vw);
+    font-size: calc(1.2vw);
 }
