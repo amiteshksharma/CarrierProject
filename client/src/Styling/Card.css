@@ -1,0 +1,30 @@
+:root {
+    --one: #7cdbd5;
+    --red: #f53240;
+    --three: #f9bed2;
+    --four: #02c8a7;
+    --five: rgb(228, 228, 228);
+    --black: rgb(192, 192, 192);
+}
+
+.card-div {
+    background-color: var(--three);
+    border-radius: calc(3vh);
+    height: calc(50vh);
+}
+
+.card-image {
+    padding-top: calc(2vh);
+}
+
+.card-title {
+    padding-top: calc(1.5vh);
+}
+
+.card-title h2 {
+    font-size: calc(2vw);
+}
+
+.card-description {
+    padding-top: calc(1.5vh);
+}

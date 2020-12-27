@@ -120,18 +120,8 @@
     background-color: var(--one);
 }
 
-.company-goals-logo {
-    height: calc(15vh);
-    width: calc(100%);
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    align-self: center;
-    background-color: var(--one);
-}
-
 .company-goals {
-    height: calc(55vh);
+    height: calc(65vh);
     width: calc(100%);
     justify-content: center;
     text-align: center;

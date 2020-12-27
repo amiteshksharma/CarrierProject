@@ -4,6 +4,10 @@ import NavBar from '../Components/NavBar';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCheck } from '@fortawesome/free-solid-svg-icons';
+import Card from '../Components/Card';
+import Hassle from '../Imgs/Hassle.jpg';
+import Package from '../Imgs/Package.svg';
+import Satisfied from '../Imgs/Satisfied.jpg';
 import '../Styling//Home.css';
 
 class Home extends React.Component {
@@ -46,38 +50,20 @@ class Home extends React.Component {
 
                 <div className="homepage-goals">
                     <Container fluid style={{backgroundColor: 'var(--one)'}}>
-                        <Row noGutters>
-                            <Col>
-                                <div className="company-goals-logo">
-                                    <p>Simplicity</p>  
-                                </div>
-                            </Col>
-                            <Col>
-                                <div className="company-goals-logo">
-                                    <p>Simplicity</p>
-                                </div>
-                            </Col>
-                            <Col>
-                                <div className="company-goals-logo">
-                                    <p>Customer driven</p>
-                                </div>
-                            </Col>
-                        </Row>
-
-                        <Row noGutters>
+                        <Row>
                             <Col>
                                 <div className="company-goals">
-                                    <p>0</p>
+                                    <Card title={"Minimal Hassle"} image={Hassle} description={"This is a filler text"}/>
                                 </div>
                             </Col>
                             <Col>
                                 <div className="company-goals">
-                                    <p>Simplicity</p>
+                                    <Card title={"Customer Satisfaction"} image={Satisfied} description={"This is a filler text"}/>
                                 </div>
                             </Col>
                             <Col>
                                 <div className="company-goals">
-                                    <p>Customer-driven</p>
+                                    <Card title={"Returns Reimagined"} image={Package} description={"This is a filler text"} />
                                 </div>
                             </Col>
                         </Row>
