@@ -26,6 +26,7 @@
     transition-property: color;
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
+    z-index: 15;
 }
 
 .navbar-div:before {
@@ -57,6 +58,21 @@
 .navbar-div:hover:before, .navbar-div:focus:before, .navbar-div:active:before {
     -webkit-transform: scale(2);
     transform: scale(2);
+}
+
+.navbar-div-scroll {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: calc(7vh);
+    vertical-align: middle;
+    box-shadow: 1px 2px 10px rgb(0, 0, 0);
+    position: fixed;
+    overflow: hidden;
+    transition: 0.3s ease-in-out;
+    background: var(--red);
+    z-index: 15;    
+    color: var(--five);
 }
 
 .navbar-items-left, .navbar-items-right {

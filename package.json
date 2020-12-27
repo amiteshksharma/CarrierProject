@@ -54,6 +54,9 @@
     "hash": "c1ba6a5b3f34f65752d957b757385233d2ec4a4fd2ea66cd4debc8569b98ef71"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/react-fontawesome": "^0.1.14",
     "@polymer/iron-icon": "3.0.1",
     "@polymer/iron-list": "3.1.0",
     "@polymer/polymer": "3.2.0",
@@ -94,14 +97,14 @@
     "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
-    "webpack-babel-multi-target-plugin": "2.3.3",
-    "copy-webpack-plugin": "5.1.2",
-    "compression-webpack-plugin": "4.0.1",
-    "raw-loader": "3.1.0",
-    "webpack-cli": "3.3.11",
-    "webpack": "4.42.0",
     "chokidar": "^3.4.0",
-    "webpack-merge": "4.2.2",
-    "webpack-dev-server": "3.11.0"
+    "compression-webpack-plugin": "4.0.1",
+    "copy-webpack-plugin": "5.1.2",
+    "raw-loader": "3.1.0",
+    "webpack": "4.42.0",
+    "webpack-babel-multi-target-plugin": "2.3.3",
+    "webpack-cli": "3.3.11",
+    "webpack-dev-server": "3.11.0",
+    "webpack-merge": "4.2.2"
   }
 }

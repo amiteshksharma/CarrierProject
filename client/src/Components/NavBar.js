@@ -4,8 +4,21 @@ import Logo from '../Imgs/Carrier_Logo.png';
 import '../Styling/Navbar.css';
 
 export default function NavBar(props) {
+    const [navbar, setNavbar] = useState(false);
+    
+    const backgroundColor = () => {
+        console.log(window.scrollY);
+        if(window.scrollY >= 90) {
+            setNavbar(true);
+        } else setNavbar(false);
+    }
+
+    useEffect(() => {
+        window.addEventListener('scroll', backgroundColor);
+    }, [])
+
     return (
-        <div className="navbar-div" >
+        <div className={navbar ? "navbar-div-scroll" : "navbar-div"} >
             {/* All items on the left side of the navbar */}
             <section className="navbar-items-left">
                 {/* The logo located on the navbar*/}
