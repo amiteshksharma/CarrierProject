@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import '../Styling/Card.css';
-import Image from '../Imgs/Satisfied.jpg';
 
 export default function Card(props) {
     return (
@@ -14,7 +13,9 @@ export default function Card(props) {
             </div>
 
             <div className="card-description">
-                <p>{props.description}</p>
+                <div>
+                    <p>{props.description}</p>
+                </div>
             </div>
         </div>
     )

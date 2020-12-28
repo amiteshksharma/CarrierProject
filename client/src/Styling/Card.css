@@ -23,8 +23,22 @@
 
 .card-title h2 {
     font-size: calc(2vw);
+    font-weight: 700;
 }
 
 .card-description {
     padding-top: calc(1.5vh);
+    width: calc(100%);
+    display: flex;
+    justify-content: center;
+}
+
+.card-description div {
+    width: calc(80%);
+    text-align: center;
+}
+
+.card-description {
+    font-size: calc(1.3vw);
+    font-weight: 500;
 }

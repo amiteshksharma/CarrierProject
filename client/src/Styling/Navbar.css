@@ -87,6 +87,10 @@
     margin-top: calc(0.4vh);    
 }
 
+.navbar-logo:hover {
+    cursor: pointer;
+}
+
 .navbar-item-link {
     align-self: center;
     justify-items: center;

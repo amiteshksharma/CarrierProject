@@ -28,19 +28,12 @@
     image-rendering: crisp-edges;
 }
 
-.panel-vector-img {
-    image-rendering: -moz-crisp-edges; /* Firefox */
-    image-rendering: -o-crisp-edges; /* Opera */
-    image-rendering: -webkit-optimize-contrast; /* Webkit (non-standard naming) */
-    image-rendering: crisp-edges;
-}
-
 /* The lone cloud on the left side */
 .cloud-section {
     position: absolute;
     top: calc(22vh);
     left: calc(10vw);  
-    animation: shake 4s infinite;  
+    animation: shake 8s infinite;  
 }
 
 @keyframes shake {
@@ -59,7 +52,7 @@
     position: absolute;
     top: calc(19vh);
     right: calc(15vw);
-    animation: shake 5s infinite;  
+    animation: shake 7s infinite;  
 }
 
 /* The css styling for the cloud */
@@ -106,18 +99,30 @@
 .description {
     position: absolute;
     top: calc(34vh);
-    right: calc(16vw);
+    right: calc(10vw);
 }
 
 .summary {
-    width: calc(19vw);
+    width: calc(27vw);
     font-size: calc(1.2vw);
+    font-weight: 600;
 }
 
 /* The goals of the company */
 .homepage-goals {
     padding-top: calc(10vh);
     background-color: var(--one);
+}
+
+.homepage-goals-title {
+    width: 100%;
+    text-align: center;
+}
+
+.homepage-goals-title h2 {
+    font-size: calc(3.5vw);
+    margin-bottom: calc(2vh);
+    font-weight: 900;
 }
 
 .company-goals {
@@ -128,4 +133,8 @@
     align-items: center;
     align-self: center;
     background-color: var(--one);
+    box-shadow: 1px 7px 12px rgba(0, 0, 0, 0.692);
+    background-color: var(--three);
+    margin-bottom: calc(10vh);
+    border-radius: calc(3vh);
 }

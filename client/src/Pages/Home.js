@@ -1,13 +1,16 @@
 import React from 'react';
-import Carrier from '../Imgs/Carrier_vector_background.jpg';
 import NavBar from '../Components/NavBar';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCheck } from '@fortawesome/free-solid-svg-icons';
 import Card from '../Components/Card';
-import Hassle from '../Imgs/Hassle.jpg';
-import Package from '../Imgs/Package.svg';
-import Satisfied from '../Imgs/Satisfied.jpg';
+//Import the images 
+import Carrier from '../Imgs/Carrier_vector_background.jpg';
+import Hassle from '../Imgs/Hassle.png';
+import Package from '../Imgs/Package.png';
+import Satisfied from '../Imgs/Satisfied.png';
+//Import the constants for the homepage
+import { hassle, reimagine, customer } from '../Constants/Homepage';
 import '../Styling//Home.css';
 
 class Home extends React.Component {
@@ -49,21 +52,25 @@ class Home extends React.Component {
                 </div>
 
                 <div className="homepage-goals">
+                    <div className="homepage-goals-title">
+                        <h2>Why Carrier?</h2>
+                    </div>
+
                     <Container fluid style={{backgroundColor: 'var(--one)'}}>
                         <Row>
                             <Col>
                                 <div className="company-goals">
-                                    <Card title={"Minimal Hassle"} image={Hassle} description={"This is a filler text"}/>
+                                    <Card title={"Minimal Hassle"} image={Hassle} description={hassle}/>
                                 </div>
                             </Col>
                             <Col>
                                 <div className="company-goals">
-                                    <Card title={"Customer Satisfaction"} image={Satisfied} description={"This is a filler text"}/>
+                                    <Card title={"Customer Satisfaction"} image={Satisfied} description={customer}/>
                                 </div>
                             </Col>
                             <Col>
                                 <div className="company-goals">
-                                    <Card title={"Returns Reimagined"} image={Package} description={"This is a filler text"} />
+                                    <Card title={"Returns Reimagined"} image={Package} description={reimagine} />
                                 </div>
                             </Col>
                         </Row>
