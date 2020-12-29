@@ -19,6 +19,10 @@ class Home extends React.Component {
         super(props);
     }
 
+    componentDidMount() {
+        fetch('/user').then(res => res.text()).then(data => console.log(data));
+    }
+
     render() {
         return (
             <div>

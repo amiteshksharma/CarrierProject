@@ -51,7 +51,7 @@
       "webpack-merge": "4.2.2",
       "webpack-dev-server": "3.11.0"
     },
-    "hash": "c1ba6a5b3f34f65752d957b757385233d2ec4a4fd2ea66cd4debc8569b98ef71"
+    "hash": "aef58258700a711d489d62843879208a52ef60b357cc07a641b9e4a84036178f"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
