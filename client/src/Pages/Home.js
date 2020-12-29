@@ -20,7 +20,15 @@ class Home extends React.Component {
     }
 
     componentDidMount() {
-        fetch('/user').then(res => res.text()).then(data => console.log(data));
+        const data = "Amitesh2001";
+
+        fetch('/user/retrieve', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            }, 
+            body: data 
+        }).then(res => res.text()).then(data => console.log(data));
     }
 
     render() {
