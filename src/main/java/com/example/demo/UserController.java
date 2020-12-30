@@ -26,6 +26,32 @@ public class UserController {
         }
     }
 
+    @PostMapping("/user/register")
+    public int createUserAuth(@RequestBody String user) throws Exception {
+        String url = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=";
+        
+        try {
+            userService.userRegisterOrLogin(user, url);
+            return 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 1;
+        }
+    }
+
+    @PostMapping("/user/login")
+    public int loginUserAuth(@RequestBody String user) throws Exception {
+        String url = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=";
+        
+        try {
+            userService.userRegisterOrLogin(user, url);
+            return 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 1;
+        }
+    }
+
     @PostMapping("/user/retrieve")
     public User getUserInformation(@RequestBody String username) throws InterruptedException, ExecutionException {
         try {

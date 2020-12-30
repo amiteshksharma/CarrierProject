@@ -3,8 +3,13 @@ package com.example.demo;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.List;
 import java.util.LinkedList;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.firestore.Firestore;
@@ -23,9 +28,13 @@ import com.google.firebase.FirebaseOptions;
 import java.lang.InterruptedException;
 import java.util.concurrent.ExecutionException;
 
+import java.net.URL;
+import java.net.HttpURLConnection;
+
 @Service  
 public class UserService {  
-    public static final String COL_NAME = "users";  
+    public static final String COL_NAME = "users"; 
+    public static final String API_KEY = "AIzaSyCb2k9JJNEpB2R0nUMR3aeU1qUKvdIB83s";
 
     public String saveUserDetails(User user) throws InterruptedException, ExecutionException {  
         Firestore firestore = FirestoreClient.getFirestore();  
@@ -33,13 +42,41 @@ public class UserService {
         return "Data successfully written"; 
     }  
 
+    public int userRegisterOrLogin(String user, String urlStr) throws Exception {
+        URL url = new URL (urlStr+API_KEY);
+        //Open a connection to the url
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();    
+        con.setRequestMethod("POST");
+        con.setRequestProperty("Content-Type", "application/json; utf-8");
+        con.setRequestProperty("Accept", "application/json");
+        con.setDoOutput(true);
+
+        try(OutputStream os = con.getOutputStream()) {
+            byte[] input = user.getBytes("utf-8");
+            os.write(input, 0, input.length);			
+        }
+
+        try(BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream(), "utf-8"))) {
+            StringBuilder response = new StringBuilder();
+            String responseLine = null;
+
+            while ((responseLine = br.readLine()) != null) {
+                response.append(responseLine.trim());
+            }
+
+            System.out.println(response.toString());
+        }
+
+        return 1;
+    }
+
     public User getUserDetails(String username) throws InterruptedException, ExecutionException {
         Firestore firestore = FirestoreClient.getFirestore();
         CollectionReference users = firestore.collection(COL_NAME);
         Query getUser = users.whereEqualTo("username", username);
         ApiFuture<QuerySnapshot> data = getUser.get();
 
-        if(data.get().getDocuments.size() == 0) return null;
+        if(data.get().getDocuments().size() == 0) return null;
 
         return data.get().getDocuments().get(0).toObject(User.class);
     }

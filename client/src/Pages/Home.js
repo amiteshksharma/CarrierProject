@@ -4,11 +4,13 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCheck } from '@fortawesome/free-solid-svg-icons';
 import Card from '../Components/Card';
+
 //Import the images 
 import Carrier from '../Imgs/Carrier_vector_background.jpg';
 import Hassle from '../Imgs/Hassle.png';
 import Package from '../Imgs/Package.png';
 import Satisfied from '../Imgs/Satisfied.png';
+
 //Import the constants for the homepage
 import { hassle, reimagine, customer } from '../Constants/Homepage';
 import '../Styling//Home.css';
@@ -20,15 +22,21 @@ class Home extends React.Component {
     }
 
     componentDidMount() {
-        const data = "Amitesh2001";
+        const data = {
+            email: 'spainrulzs32@gmail.com',
+            password: '123456',
+            returnSecureToken: true
+        };
 
-        fetch('/user/retrieve', {
-            method: 'POST',
-            headers: {
-                'Content-type': 'application/json'
-            }, 
-            body: data 
-        }).then(res => res.text()).then(data => console.log(data));
+        fetch(`/user/login`, {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json'
+        }, 
+        body: JSON.stringify(data) 
+        }).then(res => res.json()).then(data => {
+            console.log(data);
+        });
     }
 
     render() {
