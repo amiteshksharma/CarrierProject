@@ -36,12 +36,25 @@ public class UserService {
     public static final String COL_NAME = "users"; 
     public static final String API_KEY = "AIzaSyCb2k9JJNEpB2R0nUMR3aeU1qUKvdIB83s";
 
+    /**
+    * Saves the user details in the Firestore database
+    *
+    * user - object representing the user's information
+    * 
+    */
     public String saveUserDetails(User user) throws InterruptedException, ExecutionException {  
         Firestore firestore = FirestoreClient.getFirestore();  
         ApiFuture<DocumentReference> collectionsApiFuture = firestore.collection(COL_NAME).add(user);  
         return "Data successfully written"; 
     }  
 
+    /**
+    * A method used for either authenticating a user or registering a user. 
+    * Takes in a urlStr that is used for the REST API call
+    *
+    * user - object representing the user's information
+    * urlStr - a String that is the REST API url to call
+    */
     public int userRegisterOrLogin(String user, String urlStr) throws Exception {
         URL url = new URL (urlStr+API_KEY);
         //Open a connection to the url
@@ -65,11 +78,19 @@ public class UserService {
             }
 
             System.out.println(response.toString());
+            return 0;
         }
 
+        //If an error occurs, return 1
         return 1;
     }
 
+    /**
+    * Get the user's details. Takes in a string that contains the user's username
+    *
+    * username - the username of the user to look up
+    * 
+    */
     public User getUserDetails(String username) throws InterruptedException, ExecutionException {
         Firestore firestore = FirestoreClient.getFirestore();
         CollectionReference users = firestore.collection(COL_NAME);
@@ -80,4 +101,12 @@ public class UserService {
 
         return data.get().getDocuments().get(0).toObject(User.class);
     }
+
+    //getUserByEmail
+    //deleteAccount
+    //changeUserLabel
+    //updateUsername
+    //resetPassword
+    //addPaymentDetails
+    //removePaymentDetails
 }  
