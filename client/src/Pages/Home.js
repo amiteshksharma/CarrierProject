@@ -22,18 +22,14 @@ class Home extends React.Component {
     }
 
     componentDidMount() {
-        const data = {
-            email: 'spainrulzs32@gmail.com',
-            password: '123456',
-            returnSecureToken: true
-        };
+        const data = "Amitesh2001"
 
-        fetch(`/user/login`, {
+        fetch(`/user/update/label`, {
         method: 'POST',
         headers: {
             'Content-type': 'application/json'
         }, 
-        body: JSON.stringify(data) 
+        body: data
         }).then(res => res.json()).then(data => {
             console.log(data);
         });

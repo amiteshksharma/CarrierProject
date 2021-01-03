@@ -15,12 +15,21 @@ public class User {
     private String label;
     private String gender;
     private String username;
+	private String email;
 	private String password;
     private int age;
     private String address;
     private String city;
     private String state;
     private String zipCode;
+
+	public String getEmail() {
+		return this.email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	public String getName() {
 		return this.name;

@@ -79,22 +79,31 @@ public class UserService {
 
             System.out.println(response.toString());
             return 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 1;
         }
-
-        //If an error occurs, return 1
-        return 1;
     }
 
     /**
-    * Get the user's details. Takes in a string that contains the user's username
+    * Get the user's details. Takes in a string that contains the user's username or email.
+    * Can be used to find user information with either email or username 
     *
     * username - the username of the user to look up
+    * type - String that is defined as either username or email
     * 
     */
-    public User getUserDetails(String username) throws InterruptedException, ExecutionException {
+    public User getUserDetails(String username, String type) throws InterruptedException, ExecutionException {
         Firestore firestore = FirestoreClient.getFirestore();
         CollectionReference users = firestore.collection(COL_NAME);
-        Query getUser = users.whereEqualTo("username", username);
+        Query getUser = users.whereEqualTo(type, username);;
+        switch(type) {
+            case "username": 
+                getUser = users.whereEqualTo(type, username);
+            case "email":
+                getUser = users.whereEqualTo(type, username);
+        }
+
         ApiFuture<QuerySnapshot> data = getUser.get();
 
         if(data.get().getDocuments().size() == 0) return null;
@@ -102,9 +111,23 @@ public class UserService {
         return data.get().getDocuments().get(0).toObject(User.class);
     }
 
-    //getUserByEmail
     //deleteAccount
     //changeUserLabel
+    public int updateUserLabel(String username, String label) throws InterruptedException, ExecutionException {
+        Firestore firestore = FirestoreClient.getFirestore();
+        String getUid = this.getUserDocument(username);
+        DocumentReference users = firestore.collection(COL_NAME).document(getUid);
+        ApiFuture<WriteResult> future = users.update("label", label);
+        return 0;
+    }
+
+    public String getUserDocument(String username) throws InterruptedException, ExecutionException {
+        Firestore firestore = FirestoreClient.getFirestore();
+        CollectionReference users = firestore.collection(COL_NAME);  
+        Query getUser = users.whereEqualTo("username", username); 
+        ApiFuture<QuerySnapshot> data = getUser.get();
+        return data.get().getDocuments().get(0).getId();
+    }
     //updateUsername
     //resetPassword
     //addPaymentDetails

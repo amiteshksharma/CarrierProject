@@ -55,11 +55,22 @@ public class UserController {
     @PostMapping("/user/retrieve")
     public User getUserInformation(@RequestBody String username) throws InterruptedException, ExecutionException {
         try {
-            User details = userService.getUserDetails(username);
+            User details = userService.getUserDetails(username, "username");
             return details;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    @PostMapping("/user/update/label")
+    public int updateUserLabelProfile(@RequestBody User user) throws InterruptedException, ExecutionException {
+        try {
+            int check = userService.updateUserLabel(user.username, user.label);
+            return check;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 10;
         }
     }
 }
