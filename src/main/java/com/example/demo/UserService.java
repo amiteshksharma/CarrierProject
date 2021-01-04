@@ -55,7 +55,7 @@ public class UserService {
     * user - object representing the user's information
     * urlStr - a String that is the REST API url to call
     */
-    public int userRegisterOrLogin(String user, String urlStr) throws Exception {
+    public String userRegisterOrLogin(String user, String urlStr) throws Exception {
         URL url = new URL (urlStr+API_KEY);
         //Open a connection to the url
         HttpURLConnection con = (HttpURLConnection) url.openConnection();    
@@ -77,11 +77,10 @@ public class UserService {
                 response.append(responseLine.trim());
             }
 
-            System.out.println(response.toString());
-            return 0;
+            return response.toString();
         } catch (Exception e) {
             e.printStackTrace();
-            return 1;
+            return "1";
         }
     }
 
@@ -112,15 +111,70 @@ public class UserService {
     }
 
     //deleteAccount
-    //changeUserLabel
+    public int deleteUserAccount(String username) throws InterruptedException, ExecutionException {
+        Firestore firestore = FirestoreClient.getFirestore();
+        String getUid = this.getUserDocument(username);
+        ApiFuture<WriteResult> delete = firestore.collection(COL_NAME).document(getUid).delete();
+    }
+
+    public int deleteUserAccountAuth(String tokenId, String urlStr) throws InterruptedException, ExecutionException {
+        URL url = new URL (urlStr+API_KEY);
+        //Open a connection to the url
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();    
+        con.setRequestMethod("POST");
+        con.setRequestProperty("Content-Type", "application/json; utf-8");
+        con.setRequestProperty("Accept", "application/json");
+        con.setDoOutput(true);
+
+        try(OutputStream os = con.getOutputStream()) {
+            byte[] input = tokenId.getBytes("utf-8");
+            os.write(input, 0, input.length);			
+        }
+
+        try(BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream(), "utf-8"))) {
+            StringBuilder response = new StringBuilder();
+            String responseLine = null;
+
+            while ((responseLine = br.readLine()) != null) {
+                response.append(responseLine.trim());
+            }
+
+            System.out.println(response.toString());
+            return 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 1;
+        }
+    }
+    //updateUsername
+    //resetPassword
+    //addPaymentDetails
+    //removePaymentDetails
+
+    /**
+    * Update the current user's label. This means the user is simply a user, a driver, 
+    * or an admin
+    *
+    * username - the username of the account
+    * label - The label used to update the current user's label
+    */
     public int updateUserLabel(String username, String label) throws InterruptedException, ExecutionException {
         Firestore firestore = FirestoreClient.getFirestore();
         String getUid = this.getUserDocument(username);
         DocumentReference users = firestore.collection(COL_NAME).document(getUid);
-        ApiFuture<WriteResult> future = users.update("label", label);
+        ApiFuture<WriteResult> updateLabel = users.update("label", label);
         return 0;
     }
 
+    /***************************************/
+    /**          Helper methods           **/
+    /***************************************/
+
+    /** 
+    * A helper method used to get the Document id for the current user
+    *
+    * username - the username of the user's account
+    */
     public String getUserDocument(String username) throws InterruptedException, ExecutionException {
         Firestore firestore = FirestoreClient.getFirestore();
         CollectionReference users = firestore.collection(COL_NAME);  
@@ -128,8 +182,4 @@ public class UserService {
         ApiFuture<QuerySnapshot> data = getUser.get();
         return data.get().getDocuments().get(0).getId();
     }
-    //updateUsername
-    //resetPassword
-    //addPaymentDetails
-    //removePaymentDetails
 }  

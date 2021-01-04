@@ -27,28 +27,28 @@ public class UserController {
     }
 
     @PostMapping("/user/register")
-    public int createUserAuth(@RequestBody String user) throws Exception {
+    public String createUserAuth(@RequestBody String user) throws Exception {
         String url = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=";
         
         try {
-            userService.userRegisterOrLogin(user, url);
-            return 0;
+            String details = userService.userRegisterOrLogin(user, url);
+            return details;
         } catch (Exception e) {
             e.printStackTrace();
-            return 1;
+            return "1";
         }
     }
 
     @PostMapping("/user/login")
-    public int loginUserAuth(@RequestBody String user) throws Exception {
+    public String loginUserAuth(@RequestBody String user) throws Exception {
         String url = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=";
         
         try {
-            userService.userRegisterOrLogin(user, url);
-            return 0;
+            String details = userService.userRegisterOrLogin(user, url);
+            return details;
         } catch (Exception e) {
             e.printStackTrace();
-            return 1;
+            return "1";
         }
     }
 
@@ -63,7 +63,7 @@ public class UserController {
         }
     }
 
-    @PostMapping("/user/update/label")
+    @PostMapping("/user/account/label")
     public int updateUserLabelProfile(@RequestBody User user) throws InterruptedException, ExecutionException {
         try {
             int check = userService.updateUserLabel(user.username, user.label);
@@ -71,6 +71,20 @@ public class UserController {
         } catch (Exception e) {
             e.printStackTrace();
             return 10;
+        }
+    }
+
+    @PostMapping("/user/account/delete")
+    public int deleteUserAccount(@RequestBody User user) throws InterruptedException, ExecutionException {
+        String url = "https://identitytoolkit.googleapis.com/v1/accounts:delete?key=";
+        
+        try {
+            int deleteFirestore = userService.deleteUserAccount(user.username);
+            int deleteAuth = userService.deleteUserAccountAuth(user.tokenId, url);
+            return 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 1;
         }
     }
 }

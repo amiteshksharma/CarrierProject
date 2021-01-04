@@ -17,11 +17,20 @@ public class User {
     private String username;
 	private String email;
 	private String password;
+	private String tokenId;
     private int age;
     private String address;
     private String city;
     private String state;
     private String zipCode;
+
+	public String getTokenId() {
+		return this.tokenId;
+	}
+
+	public void setTokenId(String tokenId) {
+		this.tokenId = tokenId;
+	}
 
 	public String getEmail() {
 		return this.email;
