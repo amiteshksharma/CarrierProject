@@ -22,14 +22,16 @@ class Home extends React.Component {
     }
 
     componentDidMount() {
-        const data = "Amitesh2001"
+        const data = {
+            idToken: "eyJhbGciOiJSUzI1NiIsImtpZCI6ImUwOGI0NzM0YjYxNmE0MWFhZmE5MmNlZTVjYzg3Yjc2MmRmNjRmYTIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vY2Fycmllci1jZmEzOSIsImF1ZCI6ImNhcnJpZXItY2ZhMzkiLCJhdXRoX3RpbWUiOjE2MDk4MjQxMjgsInVzZXJfaWQiOiJpU1V0a1NiVzFuVWZoT1RRbHZjMDVMZ0xLcTIzIiwic3ViIjoiaVNVdGtTYlcxblVmaE9UUWx2YzA1TGdMS3EyMyIsImlhdCI6MTYwOTgyNDEyOCwiZXhwIjoxNjA5ODI3NzI4LCJlbWFpbCI6InNwYWlucnVsenNAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbInNwYWlucnVsenNAZ21haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.F20QotIMPr5JOOhpOdvMXED_I7sEmCtuhxJI5ALU_5PJitfIThS20IkfXgjA0evNFHiexuNGRJZHxgW0I0BePUN7jXujHX-QMzxTK02p7d0exTzOwz3qFefCzy_RUUXcYvls6-9-PsEVfFLgway_KIQlv66ayigZVAeHj4b3ukZXJiVE5bobZk5tKzmc2_exEB_xqdew0bwNkvJDZ4uNpL0V9taYUfgSEPGEPHzrw-2Su2HTWzWePzXq9p4ZyKiePcH7KWOhaly_sngOn6OwKyLeZgTJ7sHPtXt9lHuAhqFA_uN8FzYzWmfHrqjK13F3OHmdUf9AzIkdzPMhd1mG8w"
+        }
 
-        fetch(`/user/update/label`, {
+        fetch(`/user/account/delete`, {
         method: 'POST',
         headers: {
             'Content-type': 'application/json'
         }, 
-        body: data
+        body: JSON.stringify(data)
         }).then(res => res.json()).then(data => {
             console.log(data);
         });

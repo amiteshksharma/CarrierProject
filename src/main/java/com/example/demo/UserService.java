@@ -79,7 +79,7 @@ public class UserService {
 
             return response.toString();
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
             return "1";
         }
     }
@@ -114,10 +114,13 @@ public class UserService {
     public int deleteUserAccount(String username) throws InterruptedException, ExecutionException {
         Firestore firestore = FirestoreClient.getFirestore();
         String getUid = this.getUserDocument(username);
+        if(getUid == "") return 1;
+
         ApiFuture<WriteResult> delete = firestore.collection(COL_NAME).document(getUid).delete();
+        return 0;
     }
 
-    public int deleteUserAccountAuth(String tokenId, String urlStr) throws InterruptedException, ExecutionException {
+    public int deleteUserAccountAuth(String tokenId, String urlStr) throws Exception {
         URL url = new URL (urlStr+API_KEY);
         //Open a connection to the url
         HttpURLConnection con = (HttpURLConnection) url.openConnection();    
@@ -180,6 +183,14 @@ public class UserService {
         CollectionReference users = firestore.collection(COL_NAME);  
         Query getUser = users.whereEqualTo("username", username); 
         ApiFuture<QuerySnapshot> data = getUser.get();
-        return data.get().getDocuments().get(0).getId();
+        String str = "";
+        try {
+            str = data.get().getDocuments().get(0).getId();
+        } catch (Exception e) {
+            e.printStackTrace();
+            str = "";
+        }
+
+        return str;
     }
 }  

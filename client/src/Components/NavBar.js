@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Logo from '../Imgs/Carrier_Logo.png';
 import '../Styling/Navbar.css';
 
 export default function NavBar(props) {
     const [navbar, setNavbar] = useState(false);
+    const history = useHistory();
     
     const backgroundColor = () => {
         console.log(window.scrollY);
@@ -15,9 +16,16 @@ export default function NavBar(props) {
 
     useEffect(() => {
         window.addEventListener('scroll', backgroundColor);
+        if(props.notHomePage) {
+            setNavbar(true);
+        }
     }, [])
 
     const about = () => {
+        if(props.isNotHome) {
+            history.push("/");
+        }
+        
         window.scrollTo({
             top: 900,
             behavior: 'smooth'
@@ -25,10 +33,23 @@ export default function NavBar(props) {
     }
 
     const home = () => {
+        if(props.isNotHome) {
+            history.push("/");
+            return;
+        }
+
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
         })
+    }
+
+    const returns = () => {
+        history.push('/returns');
+    }
+
+    const loginOrRegister = (redirect) => {
+        history.push(`/${redirect}`)
     }
 
     return (
@@ -48,13 +69,13 @@ export default function NavBar(props) {
 
                 <div className="navbar-item-link">
                     <div className="item-link">
-                        <h2>Navigation</h2>
+                        <h2>Contact</h2>
                     </div>
                 </div>
 
                 <div className="navbar-item-link">
                     <div className="item-link">
-                        <h2>Navigation</h2>
+                        <h2 onClick={() => returns()}>Returns</h2>
                     </div>
                 </div>
             </section>
@@ -62,7 +83,12 @@ export default function NavBar(props) {
             <section className="navbar-items-right">
                 <div className="navbar-signup">
                     <div className="item-signup">
-                        <h2>Sign up</h2>
+                        <h2 onClick={() => loginOrRegister("signup")}>Signup</h2>
+                    </div>
+                </div>
+                <div className="navbar-login">
+                    <div className="item-login">
+                        <h2 onClick={() => loginOrRegister("login")}>Login</h2>
                     </div>
                 </div>
             </section>

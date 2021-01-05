@@ -1,6 +1,8 @@
-import logo from './logo.svg';
 import React, { useState } from 'react';
 import Home from './Pages/Home';
+import Returns from './Pages/Returns';
+import Login from './Pages/Login';
+import Signup from './Pages/Signup';
 import {
   BrowserRouter as Router,
   Switch,
@@ -20,9 +22,10 @@ function App() {
       crossorigin="anonymous"
     />
       <Switch>
-        <Route path="/" component={Home} />
-        <Route path="/home" />
-        <Route path="/test" />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/returns" component={Returns} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/signup" component={Signup} />
       </Switch>
     </Router>
   );

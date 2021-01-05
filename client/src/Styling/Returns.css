@@ -1,0 +1,56 @@
+:root {
+    --one: #7cdbd5;
+    --red: #f53240;
+    --three: #f9bed2;
+    --four: #02c8a7;
+    --five: rgb(228, 228, 228);
+    --black: rgb(37, 37, 37);
+}
+
+.returns-div {
+    background-color: var(--one);
+    width: 100%;
+    height: calc(100vh);
+}
+
+.return-begin {
+    width: calc(100%);
+    height: calc(35vh);
+    padding-top: calc(9vh);
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+}
+
+.return-create-account, .return-start-process {
+    width: calc(50%);
+    margin-left: calc(6vh);
+    margin-right: calc(6vh);
+}
+
+.return-create-account h2, .return-start-process h2 {
+    font-size: calc(1.6vw);
+    font-weight: 700;
+}
+
+.return-create-account button, .return-start-process button {
+    border: none;
+    margin-top: calc(3vh);
+    border-left: none;
+    width: calc(17vw);
+    height: calc(4vh);
+    border-radius: calc(5vh);
+    font-size: calc(1.1vw);
+    font-weight: 600;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.692);
+    background-color: var(--three);
+    color: var(--black);
+    transition: cubic-bezier(.89,.16,.24,.37) 0.3s;
+}
+
+.return-create-account button:hover, .return-start-process button:hover {
+    background-color: var(--red);
+    transition: cubic-bezier(.89,.16,.24,.37) 0.3s;
+    color: var(--five);
+}

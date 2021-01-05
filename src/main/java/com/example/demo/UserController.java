@@ -31,6 +31,7 @@ public class UserController {
         String url = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=";
         
         try {
+            System.out.println(user);
             String details = userService.userRegisterOrLogin(user, url);
             return details;
         } catch (Exception e) {
@@ -59,6 +60,7 @@ public class UserController {
             return details;
         } catch (Exception e) {
             e.printStackTrace();
+            System.out.println(e.getMessage());
             return null;
         }
     }
@@ -66,21 +68,34 @@ public class UserController {
     @PostMapping("/user/account/label")
     public int updateUserLabelProfile(@RequestBody User user) throws InterruptedException, ExecutionException {
         try {
-            int check = userService.updateUserLabel(user.username, user.label);
+            String username = user.getUsername();
+            String label = user.getLabel();
+            int check = userService.updateUserLabel(username, label);
             return check;
         } catch (Exception e) {
             e.printStackTrace();
-            return 10;
+            return 1;
         }
     }
 
     @PostMapping("/user/account/delete")
-    public int deleteUserAccount(@RequestBody User user) throws InterruptedException, ExecutionException {
+    public int deleteUserAccount(@RequestBody String user) throws InterruptedException, ExecutionException {
         String url = "https://identitytoolkit.googleapis.com/v1/accounts:delete?key=";
         
         try {
-            int deleteFirestore = userService.deleteUserAccount(user.username);
-            int deleteAuth = userService.deleteUserAccountAuth(user.tokenId, url);
+            // int deleteFirestore = userService.deleteUserAccount(username);
+            int deleteAuth = userService.deleteUserAccountAuth(user, url);
+            return 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 1;
+        }
+    }
+
+    @PostMapping("/user/account/remove")
+    public int deleteUserAccount(@RequestBody String user) throws InterruptedException, ExecutionException {
+        try {
+            int deleteFirestore = userService.deleteUserAccount(user);
             return 0;
         } catch (Exception e) {
             e.printStackTrace();

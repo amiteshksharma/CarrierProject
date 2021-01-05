@@ -104,26 +104,28 @@
     transition: ease-out 0.2s;
 }
 
-.navbar-item-link h2:hover, .navbar-signup h2:hover {
+.navbar-item-link h2:hover, .navbar-signup h2:hover, .navbar-login h2:hover {
     color: var(--text-hover);
     transition: ease-in 0.2s;
     cursor: pointer;
 }
 
 .navbar-items-right {
-    padding-left: calc(64vw);
+    padding-left: calc(60vw);
+    display: flex;
+    flex-direction: row;
 }
 
-.navbar-signup {
+.navbar-signup, .navbar-login {
     align-self: center;
     justify-items: center;
     justify-content: center;
     text-align: center;
     margin-top: calc(0.7vh);
-    width: calc(4vw); 
 }
 
-.navbar-signup h2 {
+.navbar-signup h2, .navbar-login h2 {
     font-size: calc(1.1vw);
+    width: calc(4vw);
     transition: ease-out 0.3s;
 }
