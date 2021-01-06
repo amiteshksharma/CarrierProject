@@ -78,7 +78,7 @@
 .navbar-items-left, .navbar-items-right {
     margin-left: calc(0.3vw);
     margin-top: calc(0.5vh);
-    width: 30%;
+    width: 25%;
     display: grid;
     grid-template-columns: 10% 22% 22% 22%;
 }
@@ -111,7 +111,7 @@
 }
 
 .navbar-items-right {
-    padding-left: calc(60vw);
+    padding-left: calc(66vw);
     display: flex;
     flex-direction: row;
 }

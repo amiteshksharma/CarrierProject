@@ -4,5 +4,80 @@
     --three: #f9bed2;
     --four: #02c8a7;
     --five: rgb(228, 228, 228);
-    --black: rgb(192, 192, 192);
+    --black: rgb(0, 0, 0);
+}
+
+.signup-div {
+    width: calc(100%);
+    height: calc(100vh);
+    background-image: url('../Imgs/Register.jpg');
+    background-size: cover;
+}
+
+.signup-section {
+    width: calc(100%);
+    display: flex;
+    justify-content: center;
+}
+
+.signup-box {
+    margin-top: calc(15vh);
+    width: calc(40%);
+    text-align: center;
+    color: white;
+}
+
+.signup-box h2 {
+    font-size: calc(2.3vw);
+    color: white;
+    margin-bottom: calc(5vh);
+    font-weight: 700;
+}
+
+.register-button {
+    margin-top: calc(4vh);
+}
+
+.register-button button {
+    border: none;
+    border-left: none;
+    width: calc(25vw);
+    height: calc(4.7vh);
+    border-radius: calc(2vw);
+    font-size: calc(1.3vw);
+    background-color: var(--four);
+    color: var(--black);
+    transition: cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.3s;
+    font-weight: 700;
+}
+
+.register-button button:hover {
+    background-color: var(--red);
+    color: white;
+    transition: cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.3s;
+}
+
+.redirect-to-login {
+    width: calc(100%);
+    position: relative;
+    text-align: right;
+    margin-top: calc(3vh);
+}
+
+.redirect-to-login h2 {
+    font-size: calc(1.1vw);
+    position: absolute;
+    right: 0;
+    width: fit-content;
+    padding: calc(1vh);
+    font-weight: 700;
+    transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.3s;
+    box-shadow: 4px 4px 10px black;
+    background-color: rgba(0, 0, 0, 0.322);
+}
+
+.redirect-to-login h2:hover {
+    color: rgb(180, 180, 180);
+    transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.3s;
+    cursor: pointer;
 }

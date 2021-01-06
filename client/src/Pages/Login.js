@@ -19,11 +19,11 @@ export default class Login extends React.Component {
                             <Form>
                                 <Form.Group controlId="formGroupEmail">
                                     {/* <Form.Label style={{fontSize: 'calc(1.2vw)'}}>Email address</Form.Label> */}
-                                    <Form.Control style={{height: 'calc(5vh)', fontSize: 'calc(1.2vw)'}} type="email" placeholder="Enter email" />
+                                    <Form.Control style={{height: 'calc(4.55vh)', fontSize: 'calc(1.1vw)'}} type="email" placeholder="Enter email" />
                                 </Form.Group>
                                 <Form.Group controlId="formGroupPassword">
                                     {/* <Form.Label style={{fontSize: 'calc(1.2vw)'}}>Password</Form.Label> */}
-                                    <Form.Control style={{height: 'calc(5vh)', fontSize: 'calc(1.2vw)'}} type="password" placeholder="Password" />
+                                    <Form.Control style={{height: 'calc(4.55vh)', fontSize: 'calc(1.1vw)'}} type="password" placeholder="Password" />
                                 </Form.Group>
                                 
                                 <div className="login-button">
