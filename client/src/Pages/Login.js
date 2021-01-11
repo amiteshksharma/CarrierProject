@@ -6,6 +6,46 @@ import { Form } from 'react-bootstrap';
 export default class Login extends React.Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            validated: false,
+            email: '',
+            password: ''
+        }
+
+        this.login = this.login.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    login(e) {
+        e.preventDefault();
+        if(this.state.email.length < 6 || this.state.password.length < 6) {
+            this.setState({ validated: true});
+            return;
+        } 
+
+        const object = {
+            email: this.state.email,
+            password : this.state.password,
+            returnSecureToken: true
+        }
+
+        fetch('/user/login', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(object)
+        }).then(res => res.json())
+        .then(data => {
+            console.log(data);
+        }).catch(err => {
+            console.log(err);
+        })
+    }
+
+    handleChange(e) {
+        this.setState({ [e.target.name]: e.target.value})
     }
 
     render() {
@@ -16,14 +56,24 @@ export default class Login extends React.Component {
                     <div className="login-box">
                         <h2>Login to Carrier</h2>
                         <div className="login-forms">
-                            <Form>
+                            <Form noValidate validated={this.state.validated} onSubmit={(e) => this.login(e)}>
                                 <Form.Group controlId="formGroupEmail">
                                     {/* <Form.Label style={{fontSize: 'calc(1.2vw)'}}>Email address</Form.Label> */}
-                                    <Form.Control style={{height: 'calc(4.55vh)', fontSize: 'calc(1.1vw)'}} type="email" placeholder="Enter email" />
+                                    <Form.Control style={{height: 'calc(4.55vh)', fontSize: 'calc(1.1vw)'}} type="email" placeholder="Enter email" required 
+                                        name="email" onChange={(e) => this.handleChange(e)}
+                                    />
+                                    <Form.Control.Feedback type="invalid" style={{color: 'white'}}>
+                                        Username must be at least 6 characters.
+                                    </Form.Control.Feedback>
                                 </Form.Group>
                                 <Form.Group controlId="formGroupPassword">
                                     {/* <Form.Label style={{fontSize: 'calc(1.2vw)'}}>Password</Form.Label> */}
-                                    <Form.Control style={{height: 'calc(4.55vh)', fontSize: 'calc(1.1vw)'}} type="password" placeholder="Password" />
+                                    <Form.Control style={{height: 'calc(4.55vh)', fontSize: 'calc(1.1vw)'}} type="password" placeholder="Password" required 
+                                        name="password" onChange={(e) => this.handleChange(e)}
+                                    />
+                                    <Form.Control.Feedback type="invalid" style={{color: 'white'}}>
+                                        Password must be at least 6 characters.
+                                    </Form.Control.Feedback>
                                 </Form.Group>
                                 
                                 <div className="login-button">

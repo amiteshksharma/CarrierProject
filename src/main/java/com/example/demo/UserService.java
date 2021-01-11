@@ -2,10 +2,14 @@ package com.example.demo;
 
 import org.springframework.stereotype.Service;
 
+import com.google.gson.Gson;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.LinkedList;
+import java.util.Arrays;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -55,7 +59,7 @@ public class UserService {
     * user - object representing the user's information
     * urlStr - a String that is the REST API url to call
     */
-    public String userRegisterOrLogin(String user, String urlStr) throws Exception {
+    public String userRegisterOrLogin(LoginOrRegisterUser user, String urlStr) throws Exception {
         URL url = new URL (urlStr+API_KEY);
         //Open a connection to the url
         HttpURLConnection con = (HttpURLConnection) url.openConnection();    
@@ -64,8 +68,11 @@ public class UserService {
         con.setRequestProperty("Accept", "application/json");
         con.setDoOutput(true);
 
+        ObjectMapper mapper = new ObjectMapper();
+        String convertToObj = mapper.writeValueAsString(user);
+
         try(OutputStream os = con.getOutputStream()) {
-            byte[] input = user.getBytes("utf-8");
+            byte[] input = convertToObj.getBytes("utf-8");
             os.write(input, 0, input.length);			
         }
 

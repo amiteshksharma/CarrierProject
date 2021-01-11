@@ -16,9 +16,9 @@ public class UserController {
     UserService userService;  
 
     @PostMapping("/user/create")
-    public int createUser(@RequestBody User user) throws InterruptedException, ExecutionException {
+    public int createUser(@RequestBody String user) throws InterruptedException, ExecutionException {
         try {
-            userService.saveUserDetails(user);
+            // userService.saveUserDetails(user);
             return 0;
         } catch (Exception e) {
             e.printStackTrace();
@@ -27,11 +27,10 @@ public class UserController {
     }
 
     @PostMapping("/user/register")
-    public String createUserAuth(@RequestBody String user) throws Exception {
+    public String createUserAuth(@RequestBody LoginOrRegisterUser user) throws Exception {
         String url = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=";
         
         try {
-            System.out.println(user);
             String details = userService.userRegisterOrLogin(user, url);
             return details;
         } catch (Exception e) {
@@ -41,7 +40,7 @@ public class UserController {
     }
 
     @PostMapping("/user/login")
-    public String loginUserAuth(@RequestBody String user) throws Exception {
+    public String loginUserAuth(@RequestBody LoginOrRegisterUser user) throws Exception {
         String url = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=";
         
         try {
@@ -79,23 +78,12 @@ public class UserController {
     }
 
     @PostMapping("/user/account/delete")
-    public int deleteUserAccount(@RequestBody String user) throws InterruptedException, ExecutionException {
+    public int deleteUserAccountAuth(@RequestBody String user) throws InterruptedException, ExecutionException {
         String url = "https://identitytoolkit.googleapis.com/v1/accounts:delete?key=";
         
         try {
-            // int deleteFirestore = userService.deleteUserAccount(username);
+            // int deleteFirestore = userService.deleteUserAccount(user.username);
             int deleteAuth = userService.deleteUserAccountAuth(user, url);
-            return 0;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return 1;
-        }
-    }
-
-    @PostMapping("/user/account/remove")
-    public int deleteUserAccount(@RequestBody String user) throws InterruptedException, ExecutionException {
-        try {
-            int deleteFirestore = userService.deleteUserAccount(user);
             return 0;
         } catch (Exception e) {
             e.printStackTrace();
