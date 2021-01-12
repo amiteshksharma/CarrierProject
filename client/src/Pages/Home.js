@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBar from '../Components/NavBar';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Dropdown } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCheck } from '@fortawesome/free-solid-svg-icons';
 import Card from '../Components/Card';
@@ -42,6 +42,7 @@ class Home extends React.Component {
             <div>
                 {/* The navbar for the homepage and all pages */}
                 <NavBar />
+
                 <div className="homepage-container">
                     {/* The panel on the homepage, contains background image, signup button */}
                     <section className="panel" >

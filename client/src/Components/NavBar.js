@@ -6,6 +6,8 @@ import '../Styling/Navbar.css';
 export default function NavBar(props) {
     const [navbar, setNavbar] = useState(false);
     const history = useHistory();
+
+    const isLogin = localStorage.getItem("User");
     
     const backgroundColor = () => {
         console.log(window.scrollY);
@@ -44,11 +46,7 @@ export default function NavBar(props) {
         })
     }
 
-    const returns = () => {
-        history.push('/returns');
-    }
-
-    const loginOrRegister = (redirect) => {
+    const redirect = (redirect) => {
         history.push(`/${redirect}`)
     }
 
@@ -75,23 +73,32 @@ export default function NavBar(props) {
 
                 <div className="navbar-item-link">
                     <div className="item-link">
-                        <h2 onClick={() => returns()}>Returns</h2>
+                        <h2 onClick={() => redirect("returns")}>Returns</h2>
                     </div>
                 </div>
             </section>
 
-            <section className="navbar-items-right">
-                <div className="navbar-signup">
-                    <div className="item-signup">
-                        <h2 onClick={() => loginOrRegister("signup")}>Signup</h2>
+            {!isLogin ? 
+                <section className="navbar-items-right">
+                    <div className="navbar-signup">
+                        <div className="item-signup">
+                            <h2 onClick={() => redirect("signup")}>Signup</h2>
+                        </div>
                     </div>
-                </div>
-                <div className="navbar-login">
-                    <div className="item-login">
-                        <h2 onClick={() => loginOrRegister("login")}>Login</h2>
+                    <div className="navbar-login">
+                        <div className="item-login">
+                            <h2 onClick={() => redirect("login")}>Login</h2>
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section> : 
+                <section className="navbar-items-right-profile">
+                    <div className="navbar-profile ">
+                        <div className="item-profile">
+                            <h2 onClick={() => redirect("profile")}>My Account</h2>
+                        </div>
+                    </div>
+                </section>
+            }
         </div>
     )
 }

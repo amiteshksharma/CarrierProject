@@ -6,18 +6,18 @@ import java.util.Date;
  * of a common user. Key note is the label.
  *
  * label - refers to "admin", "driver", or "user". Helps to organize users.
- * Distinct usernames for each user. 
+ * default label will be "user" when user registers on application
  * Must be at least 18 years of age.
  * Address must be real and not random letters/numbers
  */
 public class User {  
     private String name;
 	private String gender;
-    private String username;
 	private String email;
-	private String password;
-    private String label;
     private int age;
+
+	//not part of registration
+	private String label;
     private String address;
     private String city;
     private String state;
@@ -53,14 +53,6 @@ public class User {
 
 	public void setGender(String gender) {
 		this.gender = gender;
-	}
-
-	public String getUsername() {
-		return this.username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
 	}
 
 	public int getAge() {

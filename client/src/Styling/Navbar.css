@@ -104,7 +104,7 @@
     transition: ease-out 0.2s;
 }
 
-.navbar-item-link h2:hover, .navbar-signup h2:hover, .navbar-login h2:hover {
+.navbar-item-link h2:hover, .navbar-signup h2:hover, .navbar-login h2:hover, .navbar-profile h2:hover {
     color: var(--text-hover);
     transition: ease-in 0.2s;
     cursor: pointer;
@@ -116,7 +116,13 @@
     flex-direction: row;
 }
 
-.navbar-signup, .navbar-login {
+.navbar-items-right-profile {
+    padding-left: calc(69.4vw);
+    display: flex;
+    flex-direction: row;
+}
+
+.navbar-signup, .navbar-login, .navbar-profile {
     align-self: center;
     justify-items: center;
     justify-content: center;
@@ -124,7 +130,7 @@
     margin-top: calc(0.7vh);
 }
 
-.navbar-signup h2, .navbar-login h2 {
+.navbar-signup h2, .navbar-login h2, .navbar-profile h2 {
     font-size: calc(1.1vw);
     width: calc(4vw);
     transition: ease-out 0.3s;

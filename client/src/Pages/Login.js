@@ -38,6 +38,8 @@ export default class Login extends React.Component {
             body: JSON.stringify(object)
         }).then(res => res.json())
         .then(data => {
+            this.props.history.push("/");
+            localStorage.setItem('User', data.email);
             console.log(data);
         }).catch(err => {
             console.log(err);
@@ -63,7 +65,7 @@ export default class Login extends React.Component {
                                         name="email" onChange={(e) => this.handleChange(e)}
                                     />
                                     <Form.Control.Feedback type="invalid" style={{color: 'white'}}>
-                                        Username must be at least 6 characters.
+                                        Email not found
                                     </Form.Control.Feedback>
                                 </Form.Group>
                                 <Form.Group controlId="formGroupPassword">
@@ -72,7 +74,7 @@ export default class Login extends React.Component {
                                         name="password" onChange={(e) => this.handleChange(e)}
                                     />
                                     <Form.Control.Feedback type="invalid" style={{color: 'white'}}>
-                                        Password must be at least 6 characters.
+                                        Incorrect Password
                                     </Form.Control.Feedback>
                                 </Form.Group>
                                 

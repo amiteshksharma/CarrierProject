@@ -3,11 +3,12 @@ import Home from './Pages/Home';
 import Returns from './Pages/Returns';
 import Login from './Pages/Login';
 import Signup from './Pages/Signup';
+import Location from './Pages/Location';
+import Profile from './Pages/Profile';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 import './App.css';
 
@@ -26,6 +27,8 @@ function App() {
         <Route exact path="/returns" component={Returns} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
+        <Route exact path="/location" component={Location} />
+        <Route exact path="/profile" component={Profile} />
       </Switch>
     </Router>
   );

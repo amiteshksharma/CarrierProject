@@ -188,7 +188,7 @@ public class UserService {
     public String getUserDocument(String username) throws InterruptedException, ExecutionException {
         Firestore firestore = FirestoreClient.getFirestore();
         CollectionReference users = firestore.collection(COL_NAME);  
-        Query getUser = users.whereEqualTo("username", username); 
+        Query getUser = users.whereEqualTo("email", username); 
         ApiFuture<QuerySnapshot> data = getUser.get();
         String str = "";
         try {

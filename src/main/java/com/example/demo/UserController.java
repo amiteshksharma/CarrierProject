@@ -16,9 +16,9 @@ public class UserController {
     UserService userService;  
 
     @PostMapping("/user/create")
-    public int createUser(@RequestBody String user) throws InterruptedException, ExecutionException {
+    public int createUser(@RequestBody User user) throws InterruptedException, ExecutionException {
         try {
-            // userService.saveUserDetails(user);
+            userService.saveUserDetails(user);
             return 0;
         } catch (Exception e) {
             e.printStackTrace();
@@ -67,7 +67,7 @@ public class UserController {
     @PostMapping("/user/account/label")
     public int updateUserLabelProfile(@RequestBody User user) throws InterruptedException, ExecutionException {
         try {
-            String username = user.getUsername();
+            String username = user.getEmail();
             String label = user.getLabel();
             int check = userService.updateUserLabel(username, label);
             return check;

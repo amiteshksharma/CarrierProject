@@ -6,6 +6,12 @@ import NavBar from '../Components/NavBar';
 class Returns extends React.Component {
     constructor(props) {
         super(props);
+
+        this.beginReturn = this.beginReturn.bind(this);
+    }
+
+    beginReturn() {
+        this.props.history.push('/location');
     }
     
     render() {
@@ -19,12 +25,12 @@ class Returns extends React.Component {
                     </div>
                     <div className="return-start-process">
                         <h2>Ready to return? Click here!</h2>
-                        <button>Begin here!</button>
+                        <button onClick={() => this.beginReturn()}>Begin here!</button>
                     </div>
                 </section>
 
                 <section className="return-image">
-                    <img src={Return} width={1100} height={600}></img>
+                    <img src={Return} width={1111} height={588}></img>
                 </section>
             </div>
         )
